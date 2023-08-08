@@ -13,7 +13,7 @@
         </button>
       </div>
       <div class="col-md-8">
-          <h1 id="titulo">vocal "o"</h1>
+          <h1 id="titulo">vocal "{{id}}"</h1>
       </div>
       <div class="col-md-2 text-right">
         <button type="button" class="btn btn-primary" routerLink ="/principal">Siguiente!
@@ -26,69 +26,41 @@
       <div class="row border border-light">
           <div class="col-md-6">
             <div class="h-50 d-flex flex-column justify-content-center">
-              <button (click)="playAudio()" class="btn btn-success">
+              <button (click)="playAudio(id)" class="btn btn-success">
                 Escuchar
                 <i class="bi bi-volume-down"></i>
               </button>
               <i class="bi bi-check2-circle"*ngIf="mostrar"></i>
             </div>
             <div class="h-50 d-flex flex-column justify-content-center">
-              <button (click)="pronunciar('o')" class="btn btn-primary">
+              <button (click)="pronunciar(id)" class="btn btn-primary">
                 Pronunciar
                 <i class="bi bi-mic-fill"></i>
               </button>
-              <i id="o" class="bi bi-check2-circle" hidden="true"></i>
+              <i id={{id}} class="bi bi-check2-circle" hidden="true"></i>
             </div>
             </div>
           <div class="col-md-6">
-            <img class="img-fluid" src="assets/img/O.png" >
+            <img class="img-fluid" src="assets/img/{{id}}.jpg" >
         </div>
       </div>
       <br><br>
     <div class="row">
-        <div class="col-md-4">
-          <img class="img-fluid" src="assets/img/oso.png">
-        </div>
-        <div class="col-md-4">
-          <img class="img-fluid" src="assets/img/olla.png">
-        </div>
-        <div class="col-md-4">
-          <img class="img-fluid" src="assets/img/ojo.png">
+        <div class="col-md-4" *ngFor="let imagen of imagenesMostradas">
+            <img class="img-fluid" [src]="imagen" [alt]="imagen">
         </div>
     </div>
     <div class="row">
-      <div class="col-md-4 text-center">
-        <button (click)="audioOso()" class="btn btn-success">
+      <div class="col-md-4 text-center" *ngFor="let audio of audiosCargados">
+        <button (click)="playAudio(audio)" class="btn btn-success">
           Escuchar
           <i class="bi bi-volume-down"></i>
         </button>
-        <button (click)="pronunciar('oso')" class="btn btn-primary">
+        <button (click)="pronunciar(audio)" class="btn btn-primary">
           Pronunciar
           <i class="bi bi-mic-fill"></i> 
         </button>
-        <i id="oso" class="bi bi-check2-circle" hidden="true"></i>
-      </div>
-      <div class="col-md-4 text-center">
-        <button (click)="audioOlla()" class="btn btn-success">
-          Escuchar
-          <i class="bi bi-volume-down"></i>
-        </button>
-        <button (click)="pronunciar('olla')" class="btn btn-primary">
-          Pronunciar
-          <i class="bi bi-mic-fill"></i>
-        </button>
-          <i id="olla" class="bi bi-check2-circle" hidden="true"></i>
-      </div>
-      <div class="col-md-4 text-center">
-        <button (click)="audioOjo()" class="btn btn-success">
-          Escuchar
-          <i class="bi bi-volume-down"></i>
-        </button>
-        <button (click)="pronunciar('ojo')" class="btn btn-primary">
-          Pronunciar
-          <i class="bi bi-mic-fill"></i>
-        </button>
-        <i id="ojo" class="bi bi-check2-circle" hidden="true"></i>
+        <i [id]="audio" class="bi bi-check2-circle" hidden="true"></i>
       </div>
   </div>
   </section> 
