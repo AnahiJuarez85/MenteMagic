@@ -8,6 +8,7 @@ import { LetterService } from '../../services/letter.service';
   styleUrls: ['./add-edit.component.css']
 })
 export class AddEditComponent implements OnInit {
+  showButton = false;
 
   constructor(private letterService: LetterService, private router: Router) {}
 
@@ -16,7 +17,12 @@ export class AddEditComponent implements OnInit {
   onSubmit(form): void {
     this.letterService.createLetter(form.value).subscribe(res => {
       this.router.navigateByUrl('/ModuloLetras');
+      this.showButton = true;
     });
+  }
+
+  navigateToModule(): void {
+    this.router.navigateByUrl('/principal');
   }
 }
     
